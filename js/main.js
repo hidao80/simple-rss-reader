@@ -1,4 +1,5 @@
 import lang from "./multilingualization.js";
+import env from "./env.js";
 
 /**
  * Obtains a list of nodes matching the specified selector
@@ -28,7 +29,7 @@ function urlValication(url) {
 function removeFeeds(url) {
     let rssList = JSON.parse(localStorage.getItem('urls')) ?? [];
 
-    rssList = rssList.filter(item => item.match(`${url}`) == null);
+    rssList = rssList.filter(item => item !== url);
 
     localStorage.setItem('urls', JSON.stringify(rssList));
 }
@@ -66,10 +67,17 @@ function drawFeeds(url) {
     });
 
     // Object.defineProperty(document, "referrer", {value: domain}); // CORS avoidance
-    fetch(url)
-    .then( response => response.text())
+    fetch(env.proxyUrl + url)
+    .then( response => {
+        if (response.status !== 200) {
+            return false;
+        } else {
+            return response.text()
+        }
+    })
     .then( xmlData => {
-        if (xmlData.length <= 0) {
+        if (xmlData === false || xmlData.length <= 0) {
+            cardBody.insertAdjacentHTML('beforeend', lang.translate('Failed to load rss.'));
             return;
         }
 
@@ -79,7 +87,7 @@ function drawFeeds(url) {
         let rss = doc.documentElement.getElementsByTagName("item");
 
         // Creating HTML tags
-        for (let i = 0; i <= rss.length && i < 10; i++) {
+        for (let i = 0; i < rss.length && i < 10; i++) {
             // Stores title and link information retrieved from RSS
             let rssTitle = rss[i].getElementsByTagName("title")[0].textContent;
             let rssLink = rss[i].getElementsByTagName("link")[0].textContent;
