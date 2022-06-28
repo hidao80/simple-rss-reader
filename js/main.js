@@ -137,6 +137,7 @@ $$('#url-input-dialog-submit').addEventListener('click', e => {
     }
 
     // Reload and redraw the cards.
+    console.log(lang.languages());
     document.location.reload();
 });
 
