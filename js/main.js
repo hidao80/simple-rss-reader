@@ -141,6 +141,8 @@ $$('#url-input-dialog-submit').addEventListener('click', e => {
 });
 
 window.onload = e => {
+    lang.translateAll();
+
     // Retrieve a list of URLs from local storage
     let rssList = JSON.parse(localStorage.getItem('urls')) ?? [];
 

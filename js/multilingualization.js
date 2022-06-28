@@ -12,13 +12,15 @@ export default class Multilingualization {
             "dict-1": "Please enter the URL you wish to register.",
             "dict-2": "Add",
             "dict-3": "Please enter the URL from \"http(s)://\".",
-            "dict-4": "Simple RSS Reader"
+            "dict-4": "Simple RSS Reader",
+            "dict-5": "Cancel"
         },
         "ja": {
-            "dist-1": "登録するURLを入力してください。",
+            "dict-1": "登録するURLを入力してください。",
             "dict-2": "追加",
             "dict-3": "URLを「http(s)://」から入力してください。",
-            "dict-4": "<ruby><rb>Simple RSS ReaderK/rb><rt>シンプルRSSリーダー</rt></ruby>"
+            "dict-4": "Simple RSS Reader",
+            "dict-5": "キャンセル"
         }
     }
 
@@ -53,7 +55,7 @@ export default class Multilingualization {
         for (let term in dictionary) {
             let terget = document.querySelector('.' + term) ?? undefined;
             if (terget !== undefined) {
-                terget.innerText = dictionary[term];
+                terget.innerHTML = dictionary[term];
             }
         }
     }
