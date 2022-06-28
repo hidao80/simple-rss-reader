@@ -104,26 +104,12 @@ function drawFeeds(url) {
     $$('#container').appendChild(card);
 }
 
-async function copyToClipboard(text) {
-    try {
-        await navigator.clipboard.writeText(text)
-        return ;
-    } catch (error) {
-        return ;
-    }
-}
-
-const modal = new bootstrap.Modal($$('#url-input-dialog'));
-
-$$('#add-rss').addEventListener('click', e => {
-    modal.show();
-});
-
-$$('#url-input-dialog').addEventListener('shown.bs.modal', e => {
-    $$('#add-URL-input').focus()
-});
-
-$$('#url-input-dialog-submit').addEventListener('click', e => {
+/**
+ * Subscribe to RSS feeds from the dialog.
+ *
+ * @param {Event} e
+ */
+function addRssFeed(e) {
     // Retrieve a list of URLs from local storage
     let rssList = JSON.parse(localStorage.getItem('urls')) ?? [];
 
@@ -143,12 +129,38 @@ $$('#url-input-dialog-submit').addEventListener('click', e => {
         modal.hide();
         rssUrlInput.value = '';
         rssUrlInput.classList.remove('is-invalid');
+
+        // Reload and redraw the cards.
+        document.location.reload();
     } else {
         rssUrlInput.classList.add('is-invalid');
     }
+}
 
-    // Reload and redraw the cards.
-    document.location.reload();
+async function copyToClipboard(text) {
+    try {
+        await navigator.clipboard.writeText(text)
+        return ;
+    } catch (error) {
+        return ;
+    }
+}
+
+const modal = new bootstrap.Modal($$('#url-input-dialog'));
+
+$$('#add-rss').addEventListener('click', e => {
+    modal.show();
+});
+
+$$('#url-input-dialog').addEventListener('shown.bs.modal', e => {
+    $$('#add-URL-input').focus()
+});
+
+$$('#url-input-dialog-submit').addEventListener('click', addRssFeed);
+$$('#add-URL-input').addEventListener('keydown', e => {
+    if (e.keyCode === 13) {
+        addRssFeed(e);
+    }
 });
 
 window.onload = e => {
