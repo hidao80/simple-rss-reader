@@ -88,6 +88,9 @@ function drawFeeds(url) {
 
             cardBody.insertAdjacentHTML('beforeend', tagString);
         }
+    })
+    .catch( err => {
+        cardBody.insertAdjacentHTML('beforeend', lang.translate('Failed to load rss.'));
     });
 
     $$('#container').appendChild(card);

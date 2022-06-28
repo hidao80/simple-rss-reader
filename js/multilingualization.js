@@ -13,14 +13,16 @@ export default class Multilingualization {
             "dict-2": "Add",
             "dict-3": "Please enter the URL from \"http(s)://\".",
             "dict-4": "Simple RSS Reader",
-            "dict-5": "Cancel"
+            "dict-5": "Cancel",
+            "Failed to load rss.": "Failed to load rss."
         },
         "ja": {
             "dict-1": "登録するURLを入力してください。",
             "dict-2": "追加",
             "dict-3": "URLを「http(s)://」から入力してください。",
             "dict-4": "Simple RSS Reader",
-            "dict-5": "キャンセル"
+            "dict-5": "キャンセル",
+            "Failed to load rss.": "rssの読み込みに失敗しました。"
         }
     }
 
@@ -52,10 +54,15 @@ export default class Multilingualization {
     // Initialization of dictionary object
     static translateAll() {
         const dictionary = this.dictionaries[this.language()];
+        let target;
         for (let term in dictionary) {
-            let terget = document.querySelector('.' + term) ?? undefined;
-            if (terget !== undefined) {
-                terget.innerHTML = dictionary[term];
+            try {
+                target = document.querySelector('.' + term) ?? undefined;
+            } catch (exception) {
+                target = undefined;
+            }
+            if (target !== undefined) {
+                target.innerHTML = dictionary[term];
             }
         }
     }
