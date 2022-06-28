@@ -137,11 +137,11 @@ $$('#url-input-dialog-submit').addEventListener('click', e => {
     }
 
     // Reload and redraw the cards.
-    console.log(lang.languages());
     document.location.reload();
 });
 
 window.onload = e => {
+    console.log(lang.languages());
     lang.translateAll();
 
     // Retrieve a list of URLs from local storage
