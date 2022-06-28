@@ -14,6 +14,8 @@ export default class Multilingualization {
             "dict-3": "Please enter the URL from \"http(s)://\".",
             "dict-4": "Simple RSS Reader",
             "dict-5": "Cancel",
+            "dict-6": "Export feeds",
+            "dict-7": "Import feeds",
             "Failed to load rss.": "Failed to load rss."
         },
         "ja": {
@@ -22,6 +24,8 @@ export default class Multilingualization {
             "dict-3": "URLを「http(s)://」から入力してください。",
             "dict-4": "Simple RSS Reader",
             "dict-5": "キャンセル",
+            "dict-6": "RSSのエクスポート",
+            "dict-7": "RSSのインポート",
             "Failed to load rss.": "rssの読み込みに失敗しました。"
         }
     }

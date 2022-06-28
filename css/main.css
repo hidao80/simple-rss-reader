@@ -9,6 +9,7 @@ html {
 h3 {
     margin: 0.5rem;
 }
+
 #add-rss {
     position: fixed;
     right: 10px;
@@ -24,12 +25,20 @@ h3 {
 }
 
 #title {
-    height: 7rem;
     width: 100vw;
     background-color: #EEF9FF;
     filter: drop-shadow(0 0 5px #000);
     text-align: center;
+}
+#title.resize {
+    height: 7rem;
     font-size: 4rem;
+}
+@media (max-width: 600px)	{
+	#title.resize {
+        height: 3.5rem;
+		font-size: 2rem
+	}
 }
 
 #container {

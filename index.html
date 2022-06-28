@@ -30,6 +30,7 @@
 
     <!-- Project files -->
     <link href="css/main.css" rel="stylesheet" />
+    <link href="css/drawer.css" rel="stylesheet" />
     <script type="module" src="js/multilingualization.js"></script>
     <script type="module" src="js/main.js"></script>
 </head>
@@ -38,9 +39,19 @@
     <!-- Add rss button -->
     <a id="add-rss" data-bs-target="#url-input-dialog"><i class="fa-solid fa-plus"></i></a>
 
-    <div id="title" class="dict-4">
-        Simple RSS Reader
-    </div>
+	<div class="cp_offcm01">
+		<input type="checkbox" id="cp_toggle01">
+		<label for="cp_toggle01"><i class="fa-solid fa-ellipsis-vertical"></i></label>
+		<div class="cp_menu">
+            <ul>
+                <li id="url-input-dialog-open"><a class="dict-2">Add</a></li>
+                <li><a class="dict-6">Export feeds</a></li>
+                <li><a class="dict-7">Import feeds</a></li>
+            </ul>
+		</div>
+	</div>
+
+    <div id="title" class="resize dict-4">Simple RSS Reader</div>
 
     <main id="container">
 

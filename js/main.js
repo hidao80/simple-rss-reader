@@ -152,6 +152,10 @@ $$('#add-rss').addEventListener('click', e => {
     modal.show();
 });
 
+$$('#url-input-dialog-open').addEventListener('click', e => {
+    modal.show();
+});
+
 $$('#url-input-dialog').addEventListener('shown.bs.modal', e => {
     $$('#add-URL-input').focus()
 });
