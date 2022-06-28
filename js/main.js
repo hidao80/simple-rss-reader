@@ -135,6 +135,9 @@ $$('#url-input-dialog-submit').addEventListener('click', e => {
     } else {
         rssUrlInput.classList.add('is-invalid');
     }
+
+    // Reload and redraw the cards.
+    document.location.reload();
 });
 
 window.onload = e => {
