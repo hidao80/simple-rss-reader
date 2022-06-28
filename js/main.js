@@ -92,7 +92,7 @@ function drawFeeds(url) {
             let rssTitle = rss[i].getElementsByTagName("title")[0].textContent;
             let rssLink = rss[i].getElementsByTagName("link")[0].textContent;
 
-            const tagString = `<a href="${rssLink}">${rssTitle}</a><br/>`;
+            const tagString = `<a target="_blank" href="${rssLink}">${rssTitle}</a><br/>`;
 
             cardBody.insertAdjacentHTML('beforeend', tagString);
         }
