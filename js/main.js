@@ -141,7 +141,7 @@ $$('#url-input-dialog-submit').addEventListener('click', e => {
 });
 
 window.onload = e => {
-    console.log(lang.languages());
+    console.log(lang.language());
     lang.translateAll();
 
     // Retrieve a list of URLs from local storage
