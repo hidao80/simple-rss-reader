@@ -44,14 +44,14 @@
 		<label for="cp_toggle01"><i class="fa-solid fa-ellipsis-vertical"></i></label>
 		<div class="cp_menu">
             <ul>
-                <li id="url-input-dialog-open"><a class="dict-2">Add</a></li>
-                <li id="export-feeds"><a class="dict-6">Export feeds</a></li>
-                <li id="import-feeds"><a class="dict-7">Import feeds</a></li>
+                <li id="url-input-dialog-open"><a data-translate="dict-2">Add</a></li>
+                <li id="export-feeds"><a data-translate="dict-6">Export feeds</a></li>
+                <li id="import-feeds"><a  data-translate="dict-7">Import feeds</a></li>
             </ul>
 		</div>
 	</div>
 
-    <div id="title" class="resize dict-4">Simple RSS Reader</div>
+    <div id="title" class="resize" data-translate="dict-4">Simple RSS Reader</div>
 
     <main id="container">
     </main>
@@ -73,21 +73,21 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title dict-1">Please enter the URL you wish to register.</h5>
+                    <h5 class="modal-title" data-translate="dict-1">Please enter the URL you wish to register.</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-default">URL</span>
                         <input id="add-URL-input" type="text" class="form-control" aria-label="URL for RSS" aria-describedby="add-URL-input-feedback" required>
-                        <div class="invalid-feedback dict-3">
+                        <div class="invalid-feedback" data-translate="dict-3">
                             Please enter the URL from "http(s)://".
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary dict-5" data-bs-dismiss="modal">Cancel</button>
-                    <button id="url-input-dialog-submit" type="button" class="btn btn-primary dict-2">Add</button>
+                    <button type="button" class="btn btn-secondary" data-translate="dict-5" data-bs-dismiss="modal">Cancel</button>
+                    <button id="url-input-dialog-submit" type="button" class="btn btn-primary" data-translate="dict-2">Add</button>
                 </div>
             </div>
         </div>
