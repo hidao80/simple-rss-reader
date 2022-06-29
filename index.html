@@ -45,8 +45,8 @@
 		<div class="cp_menu">
             <ul>
                 <li id="url-input-dialog-open"><a class="dict-2">Add</a></li>
-                <li><a class="dict-6">Export feeds</a></li>
-                <li><a class="dict-7">Import feeds</a></li>
+                <li id="export-feeds"><a class="dict-6">Export feeds</a></li>
+                <li id="import-feeds"><a class="dict-7">Import feeds</a></li>
             </ul>
 		</div>
 	</div>
@@ -54,8 +54,19 @@
     <div id="title" class="resize dict-4">Simple RSS Reader</div>
 
     <main id="container">
-
     </main>
+
+    <!-- Upload file form for import -->
+    <div class="hidden">
+        <form id="upload-form">
+            <input type="file" accept=".json" id="upload-file" />
+            <input type="submit" />
+        </form>
+    </div>
+
+    <div class="spinner-container">
+        <span id="spinner" class="spinner-border" role="status" aria-hidden="true"></span>
+    </div>
 
     <!-- Add URL for RSS Dialog -->
     <div class="modal" tabindex="-1" id="url-input-dialog">

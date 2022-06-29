@@ -12,8 +12,7 @@ A simple RSS reader.
 - [x] Subscribe to multiple subscription URLs
 - [ ] Automatic updates
 - [x] Storing URLs for RSS without server using localStorage
-- [ ] Generation of text for SNS sharing
-- [ ] Batch export/import of RSS URLs during registration
+- [x] Batch export/import of RSS URLs during registration
 
 ## Screenshot
 

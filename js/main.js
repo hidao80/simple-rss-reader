@@ -131,43 +131,111 @@ function addRssFeed(e) {
         rssUrlInput.classList.remove('is-invalid');
 
         // Reload and redraw the cards.
+        $$('.spinner-container').style.display = 'block';
         document.location.reload();
     } else {
         rssUrlInput.classList.add('is-invalid');
     }
 }
 
-async function copyToClipboard(text) {
-    try {
-        await navigator.clipboard.writeText(text)
-        return ;
-    } catch (error) {
-        return ;
+/**
+ * two-digit conversion
+ *
+ * @param {int} num
+ * @returns {string}
+ */
+function toTwoDigit(num) {
+    return ('00' + num).slice(-2);
+}
+
+/**
+ * Get the current timestamp string
+ *
+ * return {string}
+ */
+function getTimestampString() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = toTwoDigit(now.getMonth()+1);
+    const date = toTwoDigit(now.getDate());
+    const hour = toTwoDigit(now.getHours());
+    const min = toTwoDigit(now.getMinutes());
+
+    return year + month + date + hour + min;
+}
+
+/**
+ * Export json file
+ */
+function exportJsonFile() {
+    // const contentType = 'application/json';
+    const contentType = 'text/plain';
+
+    // Creating Anchor Tags
+    const downLoadLink = document.createElement("a");
+
+    // Generate HTML text to download
+    const outputDataString = localStorage.getItem('urls') ?? [];  // Pass byte strings as they are
+    const downloadFileName = 'SimpleRssReaderFeeds_' + getTimestampString() + ".json"
+    downLoadLink.download = downloadFileName;
+    downLoadLink.href = URL.createObjectURL(new Blob([outputDataString], { type: contentType }));
+    downLoadLink.dataset.downloadurl = [contentType, downloadFileName, downLoadLink.href].join(":");
+    downLoadLink.click();
+}
+
+/**
+ * Export json file
+ */
+function importJsonFile() {
+    const files = $$("#upload-file").files;
+
+    if (files.length === 0) {
+        console.log("files length = 0");
+        return false;
     }
+
+    const file = files[0];
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = () => {
+        console.log(reader.result);
+
+        // If it is not json, it will generate an error.
+        const importFeeds = JSON.parse(reader.result);
+        const currentFeeds = JSON.parse(localStorage.getItem('urls'));
+        const json = JSON.stringify([...new Set([...importFeeds, ...currentFeeds])]);
+
+        console.log(json);
+
+        // Write back to local storage
+        localStorage.setItem('urls', json);
+
+        // Reload and redraw the cards.
+        $$('.spinner-container').style.display = 'block';
+        document.location.reload();
+    }
+
+    // Cancel a Submit event
+    return false;
 }
 
 const modal = new bootstrap.Modal($$('#url-input-dialog'));
 
-$$('#add-rss').addEventListener('click', e => {
-    modal.show();
-});
-
-$$('#url-input-dialog-open').addEventListener('click', e => {
-    modal.show();
-});
-
-$$('#url-input-dialog').addEventListener('shown.bs.modal', e => {
-    $$('#add-URL-input').focus()
-});
-
-$$('#url-input-dialog-submit').addEventListener('click', addRssFeed);
-$$('#add-URL-input').addEventListener('keydown', e => {
-    if (e.keyCode === 13) {
-        addRssFeed(e);
-    }
-});
-
 window.onload = e => {
+    // Set event listener
+    $$('#add-rss').addEventListener('click', e => modal.show());
+    $$('#url-input-dialog-open').addEventListener('click', e => modal.show());
+    $$('#url-input-dialog').addEventListener('shown.bs.modal', e => $$('#add-URL-input').focus());
+    $$('#url-input-dialog-submit').addEventListener('click', addRssFeed);
+    $$('#add-URL-input').addEventListener('keydown', e => {
+        if (e.keyCode === 13) {
+            addRssFeed(e);
+        }
+    });
+    $$('#export-feeds').addEventListener('click', exportJsonFile);
+    $$('#import-feeds').addEventListener('click', e => $$("#upload-file").click());
+    $$('#upload-file').addEventListener('change', importJsonFile);
+
     console.log(lang.language());
     lang.translateAll();
 

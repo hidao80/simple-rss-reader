@@ -47,6 +47,27 @@ h3 {
     background-color: #FAFAFA;
 }
 
+#spinner {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.spinner-container {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.1); ;
+}
+
 .feed-card {
     min-width: 18rem;
     margin: 1rem;
@@ -65,4 +86,8 @@ h3 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.hidden {
+    display: none;
 }
