@@ -14,7 +14,7 @@ h3 {
 
 .card-body.rss-entries a {
     display: block;
-    max-width: 24rem;
+    max-width: 100%;
     margin-bottom: 0.5rem;
 }
 
