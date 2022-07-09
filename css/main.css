@@ -8,6 +8,12 @@ html {
 
 h3 {
     margin: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-body.rss-entries br {
+    margin-bottom: 0.5rem;
 }
 
 #add-rss {
@@ -69,7 +75,7 @@ h3 {
 }
 
 .feed-card {
-    min-width: 18rem;
+    min-width: 24rem;
     margin: 1rem;
 }
 
