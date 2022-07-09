@@ -7,18 +7,13 @@ html {
 }
 
 h3 {
-    max-width: 100%;
     margin: 0.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .card-body.rss-entries a {
     display: block;
-    max-width: 100%;
     margin-bottom: 0.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    text-decoration: none;
 }
 
 #add-rss {
@@ -82,6 +77,10 @@ h3 {
 .feed-card {
     min-width: 24rem;
     margin: 1rem;
+    white-space: nowrap;
+    max-width: 24rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .delete-btn {
@@ -93,9 +92,6 @@ h3 {
 }
 
 .rss-entries {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .hidden {
