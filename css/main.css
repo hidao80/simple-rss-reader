@@ -12,7 +12,7 @@ h3 {
     text-overflow: ellipsis;
 }
 
-.card-body.rss-entries br {
+.card-body.rss-entries a {
     margin-bottom: 0.5rem;
 }
 
@@ -88,7 +88,7 @@ h3 {
 }
 
 .rss-entries {
-    max-width: 18rem;
+    min-width: 24rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
