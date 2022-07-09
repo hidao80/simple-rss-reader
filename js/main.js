@@ -203,7 +203,7 @@ function importJsonFile() {
         // If it is not json, it will generate an error.
         const importFeeds = JSON.parse(reader.result);
         const currentFeeds = JSON.parse(localStorage.getItem('urls'));
-        const json = JSON.stringify([...new Set([...importFeeds, ...currentFeeds])]);
+        const json = JSON.stringify([...currentFeeds ?? [], ...importFeeds]);
 
         console.log(json);
 
