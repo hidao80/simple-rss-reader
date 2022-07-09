@@ -83,7 +83,7 @@ function drawFeeds(url) {
         const doc = parser.parseFromString(xmlData, "text/xml");
         let rss = doc.documentElement.getElementsByTagName("item");
         const title = doc.documentElement.getElementsByTagName("title")[0];
-        cardTitle.innerText = title;  // Domain in URL
+        cardTitle.innerText = title.textContent;  // Domain in URL
 
         // Creating HTML tags
         for (let i = 0; i < rss.length && i < 20; i++) {
