@@ -40,14 +40,11 @@ function removeFeeds(url) {
  * @param {string} url
  */
 function drawFeeds(url) {
-    const domain = url.split('/')[2];
-
     const deleteButton = document.createElement('div');
     deleteButton.classList.add('delete-btn');
     deleteButton.innerHTML = '<i class="fa-solid fa-delete-left"></i>';
 
     const cardTitle = document.createElement('h3');
-    cardTitle.innerText = domain;  // Domain in URL
 
     const cardBody = document.createElement("div")
     cardBody.classList.add('card-body');
@@ -85,9 +82,11 @@ function drawFeeds(url) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(xmlData, "text/xml");
         let rss = doc.documentElement.getElementsByTagName("item");
+        const title = doc.documentElement.getElementsByTagName("title");
+        cardTitle.innerText = title;  // Domain in URL
 
         // Creating HTML tags
-        for (let i = 0; i < rss.length && i < 10; i++) {
+        for (let i = 0; i < rss.length && i < 20; i++) {
             // Stores title and link information retrieved from RSS
             let rssTitle = rss[i].getElementsByTagName("title")[0].textContent;
             let rssLink = rss[i].getElementsByTagName("link")[0].textContent;
@@ -121,10 +120,10 @@ function addRssFeed(e) {
         rssList.push(url);
 
         // Remove duplicate elements
-        const uniquRssList = [... new Set(rssList)];
+        // const uniquRssList = [... new Set(rssList)];
 
         // Write back to local storage
-        localStorage.setItem('urls', JSON.stringify(uniquRssList));
+        localStorage.setItem('urls', JSON.stringify([...rssList]));
 
         modal.hide();
         rssUrlInput.value = '';
