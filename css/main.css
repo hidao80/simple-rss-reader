@@ -88,7 +88,7 @@ h3 {
 }
 
 .rss-entries {
-    min-width: 24rem;
+    max-width: 24rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
