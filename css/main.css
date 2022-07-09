@@ -8,12 +8,22 @@ html {
 
 h3 {
     margin: 0.5rem;
+
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-body.rss-entries a {
     display: block;
     margin-bottom: 0.5rem;
     text-decoration: none;
+
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #add-rss {
@@ -77,10 +87,7 @@ h3 {
 .feed-card {
     min-width: 24rem;
     margin: 1rem;
-    white-space: nowrap;
     max-width: 24rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .delete-btn {
@@ -89,9 +96,6 @@ h3 {
     right: 1rem;
     opacity: 0.3;
     font-size: 2rem;
-}
-
-.rss-entries {
 }
 
 .hidden {
