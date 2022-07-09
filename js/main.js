@@ -88,7 +88,7 @@ function drawFeeds(url) {
         cardTitle.innerText = title.textContent.substring(0, titleDisplayLength);
 
         // Creating HTML tags
-        for (let i = 0; i < rss.length && i < 20; i++) {
+        for (let i = 0; i < rss.length && i < 10; i++) {
             // Stores title and link information retrieved from RSS
             let rssTitle = rss[i].getElementsByTagName("title")[0].textContent;
             let rssLink = rss[i].getElementsByTagName("link")[0].textContent;
