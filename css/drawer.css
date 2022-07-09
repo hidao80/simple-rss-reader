@@ -16,12 +16,9 @@ ol, ul {
 	width: 250px;
 	height: 100%;
 	cursor: pointer;
-	/* -webkit-transition: 0.53s transform; */
     transition: 0.53s transform;
-	/* -webkit-transition-timing-function: cubic-bezier(.38,.52,.23,.99); */
     transition-timing-function: cubic-bezier(.38,.52,.23,.99);
 	background-color: #CCE6E8;
-	/* opacity: 0.8; */
 }
 .cp_offcm01 .cp_menu ul {
 	margin: 0;
