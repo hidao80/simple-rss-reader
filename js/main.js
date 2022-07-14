@@ -246,6 +246,9 @@ window.onload = e => {
     for (let url of rssList) {
         drawFeeds(url);
     }
+    
+    // Reload once every 10 minutes
+    setTimeout(location.reload, 600_000);
 };
 
 
